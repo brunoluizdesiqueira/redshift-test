@@ -1,11 +1,12 @@
 module.exports = {
   production: {
     client: process.env.RS_CLIENT,
-    version: '8.0.2',
+    version: '8.8.0',
     connection: {
-      host:     process.env.RS_HOST,
+      host: process.env.RS_HOST,
+      port: process.env.RS_PORT,
       database: process.env.RS_DATABASE,
-      user:     process.env.RS_USER,
+      user: process.env.RS_USER,
       password: process.env.RS_PASSWORD,
       useNullAsDefault: true,
       searchPath: ['product_db']
