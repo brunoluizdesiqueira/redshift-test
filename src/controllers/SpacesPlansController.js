@@ -7,7 +7,7 @@ module.exports = {
         .select('space_id', 'space_plan', 'extended_support')
         .withSchema('product_data')
         .where('space_id', req.params.spaceId)
-        .limit(1)
+        .limit('1')
 
       res.json(results)
     } catch(e) {
