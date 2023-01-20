@@ -9,7 +9,7 @@ module.exports = {
       user: process.env.RS_USER,
       password: process.env.RS_PASSWORD,
       useNullAsDefault: true,
-      searchPath: ['product_db']
+      searchPath: ['product_db', 'product_data']
     },
     pool: {
       min: 2,

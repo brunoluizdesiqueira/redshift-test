@@ -3,9 +3,10 @@ const knex = require('../database')
 module.exports = {
   async index(req, res) {
     try {
-      const results = await knex('spaces')
-        .select('id')
-        .withSchema('product_db')
+      const results = await knex('v_spaces_plans')
+        .select('space_id', 'space_plan', 'extended_support')
+        .withSchema('product_data')
+        .where('space_id', req.params.spaceId)
         .limit(1)
 
       res.json(results)

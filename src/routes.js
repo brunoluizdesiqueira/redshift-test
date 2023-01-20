@@ -1,8 +1,8 @@
 const express = require('express')
 const routes = express.Router()
-const SpacesController = require('./controllers/SpacesController')
+const SpacesPlansController = require('./controllers/SpacesPlansController')
 
-routes.get('/about', SpacesController.about)
-routes.get('/', SpacesController.index)
+routes.get('/about', SpacesPlansController.about)
+routes.get('/:spaceId', SpacesPlansController.index)
 
 module.exports = routes
