@@ -1,15 +1,32 @@
 const knex = require('../database')
 
+async function getSpacePlanBySpaceId(spaceId) {
+  try {
+    return await knex('v_spaces_plans')
+      .select('space_id', 'space_plan', 'extended_support')
+      .withSchema('product_data')
+      .where('space_id', spaceId)
+      .limit('1')
+  } catch(e) {
+    throw e
+  }
+}
+
 module.exports = {
   async index(req, res) {
     try {
-      const results = await knex('v_spaces_plans')
-        .select('space_id', 'space_plan', 'extended_support')
-        .withSchema('product_data')
-        .where('space_id', req.params.spaceId)
-        .limit('1')
+      res.json(await getSpacePlanBySpaceId(req.params.spaceId))
+    } catch (e) {
+      console.error(e)
+      res.json('Error: '+ e.toString())
+    }
+  },
 
-      res.json(results)
+  async issueCreate(req, res) {
+    try {
+      const body = await req.body
+      console.log(body)
+      res.end()
     } catch(e) {
       console.error(e)
       res.json('Error: '+ e.toString())
