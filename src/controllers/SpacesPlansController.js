@@ -2,7 +2,7 @@ const knex = require('../database')
 
 async function getSpacePlanBySpaceId(spaceId) {
   try {
-    return await knex('v_spaces_plans')
+    return knex('v_spaces_plans')
       .select('space_id', 'space_plan', 'extended_support')
       .withSchema('product_data')
       .where('space_id', spaceId)
@@ -21,7 +21,7 @@ module.exports = {
       res.json('Error: '+ e.toString())
     }
   },
-  
+
   async about(req, res) {
     res.send('API test integration redshift')
   }
